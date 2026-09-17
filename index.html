@@ -6,14 +6,27 @@
   <meta name="theme-color" content="#0a0a0c">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>Shadow Fitness – Gulshan Branch | Elite Gym Karachi</title>
-  <meta name="description" content="High-performance gym at FL-3 Block 4 Gulshan-e-Iqbal, Karachi. Olympic equipment, certified coaches, steam &amp; lockers. Call 0336 4769509.">
+  <title>TG The Gym Mesa | Premier Gym in Mesa, AZ</title>
+  <meta name="description" content="TG The Gym Mesa at 1126 S Gilbert Rd, Mesa, AZ 85204. Top-tier equipment, certified coaches, and a high-energy community. Call (480) 530-4988.">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
   <script src="data.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 
 <body>
+
+  <!-- ═══ SCROLL PROGRESS BAR ═════════════════════════════════ -->
+  <div id="scroll-progress"></div>
+
+  <!-- ═══ CURSOR GLOW (desktop) ════════════════════════════════ -->
+  <div id="cursor-glow"></div>
+
+  <!-- ═══ THREE.JS 3D CANVAS ═══════════════════════════════════ -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- ═══ AMBIENT ORB LAYER ════════════════════════════════════ -->
+  <div id="ambient-orbs" aria-hidden="true"></div>
 
   <!-- ═══════════════════════════════════════════════════════
        HEADER
@@ -27,8 +40,8 @@
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15M6 8.5l-2 3.5 2 3.5M18 8.5l2 3.5-2 3.5M9 5.5v13M15 5.5v13"/></svg>
         </div>
         <div>
-          <div class="brand-name">SHADOW FITNESS</div>
-          <div class="brand-sub">Gulshan Branch</div>
+          <div class="brand-name">TG THE GYM</div>
+          <div class="brand-sub">Mesa, Arizona</div>
         </div>
       </a>
 
@@ -44,9 +57,9 @@
 
       <!-- Header Actions -->
       <div class="header-actions">
-        <a href="tel:03364769509" class="call-btn">
+        <a href="tel:4805304988" class="call-btn">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
-          <span class="call-number">0336 4769509</span>
+          <span class="call-number">(480) 530-4988</span>
           <span class="call-label">Call</span>
         </a>
 
@@ -71,8 +84,8 @@
 
       <div class="drawer-head">
         <div>
-          <div class="brand-name" style="font-size:16px;">SHADOW FITNESS</div>
-          <div class="brand-sub">Gulshan Branch</div>
+          <div class="brand-name" style="font-size:16px;">TG THE GYM</div>
+          <div class="brand-sub">Mesa, Arizona</div>
         </div>
         <button class="close-btn" id="drawer-close" aria-label="Close">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
@@ -107,10 +120,10 @@
       </nav>
 
       <div class="drawer-foot">
-        <button class="btn btn-primary btn-full open-modal" data-plan="Free 1-Day Pass">Claim Free Day Pass</button>
-        <a href="tel:03364769509" class="btn btn-ghost btn-full">
+        <button class="btn btn-primary btn-full open-modal" data-plan="Free 1-Day Pass">CLAIM FREE PASS</button>
+        <a href="tel:4805304988" class="btn btn-ghost btn-full">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:16px;height:16px;color:#e8192c"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
-          0336 4769509
+          (480) 530-4988
         </a>
       </div>
     </div>
@@ -128,47 +141,46 @@
       <div class="hero-badge">
         <span class="badge">
           <span style="width:6px;height:6px;border-radius:50%;background:#e8192c;display:inline-block;animation:pulse 2s infinite;"></span>
-          FL-3 Block 4 Gulshan-e-Iqbal, Karachi
+          MESA &bull; PHOENIX, AZ
         </span>
       </div>
 
       <h1 class="hero-h1">
-        Forge Your Discipline<br>
-        <em>In The Shadows.</em>
+        ELEVATE YOUR FITNESS.<br>
+        <em>MESA'S PREMIER GYM.</em>
       </h1>
 
       <p class="hero-sub">
-        Karachi's serious gym for serious lifters. Olympic equipment, expert coaches, zero chaos at Block 4 Gulshan-e-Iqbal.
+        Top-tier equipment, high-energy environment, and a dedicated community in Mesa, Arizona.
       </p>
 
       <div class="hero-ctas">
         <button class="btn btn-primary open-modal" data-plan="Free 1-Day Trial">
-          Claim Free Day Pass
+          CLAIM FREE PASS
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
         </button>
-        <a href="https://wa.me/923364769509?text=Hello%20Shadow%20Fitness%20Gulshan!%20I%20want%20membership%20details."
-           target="_blank" rel="noopener" class="btn btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:16px;height:16px;color:#25d366"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
-          WhatsApp Us
+        <a href="#pricing" class="btn btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:16px;height:16px;color:#e8192c"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z"/></svg>
+          VIEW MEMBERSHIPS
         </a>
       </div>
 
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <span class="hero-stat-label">Hours</span>
-          <span class="hero-stat-value">6 AM – 11 PM</span>
+      <div class="hero-stats reveal-up" data-delay="200">
+        <div class="hero-stat tilt-card">
+          <span class="hero-stat-label"><span data-count="500" data-suffix="+">500+</span> REVIEWS</span>
+          <span class="hero-stat-value" data-count="4.5" data-decimals="1" data-suffix="★">4.5★</span>
         </div>
-        <div class="hero-stat">
-          <span class="hero-stat-label">Equipment</span>
-          <span class="hero-stat-value">Olympic Grade</span>
+        <div class="hero-stat tilt-card">
+          <span class="hero-stat-label">PRO EQUIPMENT</span>
+          <span class="hero-stat-value">FULL</span>
         </div>
-        <div class="hero-stat">
-          <span class="hero-stat-label">Climate</span>
-          <span class="hero-stat-value">Full AC + Gen</span>
+        <div class="hero-stat tilt-card">
+          <span class="hero-stat-label">AZ COMMUNITY</span>
+          <span class="hero-stat-value">MESA</span>
         </div>
-        <div class="hero-stat">
-          <span class="hero-stat-label">Location</span>
-          <span class="hero-stat-value">Block 4 Gulshan</span>
+        <div class="hero-stat tilt-card">
+          <span class="hero-stat-label">VIP DAY PASS</span>
+          <span class="hero-stat-value">FREE</span>
         </div>
       </div>
 
@@ -183,31 +195,31 @@
       <div class="about-grid">
 
         <div>
-          <p class="section-label">The Gulshan Chapter</p>
-          <h2 class="about-h2">Built for Focus, Space &amp; Real Results.</h2>
+          <p class="section-label reveal-left">The Mesa Chapter</p>
+          <h2 class="about-h2 reveal-left" data-delay="80">Built for Performance, Results &amp; Community.</h2>
           <p class="about-p">
-            Located at <strong style="color:#f1f5f9;">FL-3 Allama Shabbir Ahmed Usmani Road, Block 4 Gulshan-e-Iqbal</strong>, Shadow Fitness was designed from the ground up to eliminate gym chaos.
+            Located at <strong style="color:#f1f5f9;">1126 S Gilbert Rd, Mesa, Arizona</strong>, TG The Gym was built from the ground up to deliver a premium fitness experience for the Valley.
           </p>
           <p class="about-p">
-            Precision rubberized flooring, imported biomechanically tuned machines, dedicated free-weight bays, and a no-nonsense training culture.
+            State-of-the-art equipment, dedicated lifting zones, and a high-energy culture that pushes you to your best every single session.
           </p>
 
           <div class="check-list">
             <div class="check-item">
               <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-              Certified strength coaches
+              Certified personal trainers
             </div>
             <div class="check-item">
               <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-              Lockers, showers &amp; steam
+              Full pro-grade equipment
             </div>
             <div class="check-item">
               <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-              Separate ladies &amp; gents slots
+              High-energy group classes
             </div>
             <div class="check-item">
               <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-              Full AC &amp; generator backup
+              Mesa's dedicated community
             </div>
           </div>
         </div>
@@ -215,23 +227,23 @@
         <div class="info-card">
           <div class="info-row">
             <span class="info-label">Floor Layout</span>
-            <span class="info-value">Premium 2-Level</span>
+            <span class="info-value">Pro Multi-Zone</span>
           </div>
           <div class="info-row">
             <span class="info-label">Free Weights</span>
-            <span class="info-value">Up to 60KG DBs</span>
+            <span class="info-value">Full Range DBs</span>
           </div>
           <div class="info-row">
-            <span class="info-label">Power Platforms</span>
-            <span class="info-value">Olympic Bays</span>
+            <span class="info-label">Cardio Zone</span>
+            <span class="info-value">Top-Tier Machines</span>
           </div>
           <div class="info-row">
-            <span class="info-label">Power Backup</span>
-            <span class="info-value green">100% Generator</span>
+            <span class="info-label">Community</span>
+            <span class="info-value green">Mesa, AZ</span>
           </div>
           <div class="info-row">
             <span class="info-label">Branch Hotline</span>
-            <a href="tel:03364769509" class="info-value red">0336 4769509</a>
+            <a href="tel:4805304988" class="info-value red">(480) 530-4988</a>
           </div>
         </div>
 
@@ -245,9 +257,9 @@
   <section id="facilities">
     <div class="container">
 
-      <p class="section-label">World-Class Standards</p>
-      <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.02em;">Engineered for Heavy Demands</h2>
-      <p style="font-size:15px;color:#6b7280;margin-bottom:48px;max-width:520px;line-height:1.65;">Zero clutter, perfectly zoned areas, and international-grade equipment to keep workouts smooth and injury-free.</p>
+      <p class="section-label reveal-up">World-Class Standards</p>
+      <h2 class="reveal-up" data-delay="80" style="font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.02em;">Engineered for Peak Performance</h2>
+      <p class="reveal-up" data-delay="160" style="font-size:15px;color:#6b7280;margin-bottom:48px;max-width:520px;line-height:1.65;">Zero clutter, perfectly zoned areas, and pro-grade equipment to keep workouts smooth, effective, and injury-free in Mesa.</p>
 
       <div class="facilities-grid">
 
@@ -255,8 +267,8 @@
           <div class="fac-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15M6 8.5l-2 3.5 2 3.5M18 8.5l2 3.5-2 3.5M9 5.5v13M15 5.5v13"/></svg>
           </div>
-          <h3 class="fac-title">Heavy Iron Bay</h3>
-          <p class="fac-desc">Calibrated urethane plates, rubber hex dumbbells up to 60kg, competition benches, and dedicated deadlift platforms.</p>
+          <h3 class="fac-title">Pro Strength Floor</h3>
+          <p class="fac-desc">Full range of dumbbells, Olympic barbells, power racks, and dedicated deadlift platforms for serious lifters.</p>
         </div>
 
         <div class="card">
@@ -264,7 +276,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
           </div>
           <h3 class="fac-title">Cardio Deck</h3>
-          <p class="fac-desc">Commercial curved treadmills, assault bikes, stairmasters, and rowing machines for peak aerobic conditioning.</p>
+          <p class="fac-desc">Commercial treadmills, ellipticals, assault bikes, and rowing machines for peak aerobic conditioning in Mesa.</p>
         </div>
 
         <div class="card">
@@ -272,15 +284,15 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
           </div>
           <h3 class="fac-title">Expert Coaches</h3>
-          <p class="fac-desc">Certified trainers who design personalized macros, progressive overload protocols, and correct form in every session.</p>
+          <p class="fac-desc">Certified personal trainers who build customized programs and keep your form sharp every session.</p>
         </div>
 
         <div class="card">
           <div class="fac-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
           </div>
-          <h3 class="fac-title">Steam &amp; Lockers</h3>
-          <p class="fac-desc">Secure digital lockers, clean showers, post-workout steam sauna, and chilled hydration stations.</p>
+          <h3 class="fac-title">Mesa Community</h3>
+          <p class="fac-desc">A high-energy, motivating environment built by Mesa locals — your crew is already here training.</p>
         </div>
 
       </div>
@@ -293,9 +305,9 @@
   <section id="programs">
     <div class="container">
 
-      <p class="section-label">Targeted Disciplines</p>
-      <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.02em;">Programs Built for Real Growth</h2>
-      <p style="font-size:15px;color:#6b7280;margin-bottom:48px;max-width:520px;line-height:1.65;">Whether you want raw strength, fat loss, or functional power — our Gulshan trainers map your complete blueprint.</p>
+      <p class="section-label reveal-up">Targeted Disciplines</p>
+      <h2 class="reveal-up" data-delay="80" style="font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.02em;">Programs Built for Real Growth</h2>
+      <p class="reveal-up" data-delay="160" style="font-size:15px;color:#6b7280;margin-bottom:48px;max-width:520px;line-height:1.65;">Whether you want raw strength, fat loss, or functional power — our Mesa trainers map your complete blueprint.</p>
 
       <div class="programs-grid">
 
@@ -373,9 +385,9 @@
   <section id="pricing">
     <div class="container">
 
-      <p class="section-label">Transparent Rates</p>
-      <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.02em;">No Hidden Charges.</h2>
-      <p style="font-size:15px;color:#6b7280;margin-bottom:48px;max-width:520px;line-height:1.65;">Full floor access, lockers, and showers included in every plan. No surprise fees.</p>
+      <p class="section-label reveal-up">Transparent Rates</p>
+      <h2 class="reveal-up" data-delay="80" style="font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.02em;">No Hidden Charges.</h2>
+      <p class="reveal-up" data-delay="160" style="font-size:15px;color:#6b7280;margin-bottom:48px;max-width:520px;line-height:1.65;">Full floor access and locker room included in every plan. Contact us for current Mesa pricing.</p>
 
       <div class="pricing-grid">
 
@@ -391,11 +403,11 @@
             </div>
           </div>
           <div class="price-amount">
-            <span class="currency">PKR </span>
-            <span class="amount">6,500</span>
-            <span class="period"> / mo</span>
+            <span class="currency"></span>
+            <span class="amount" style="font-size:1.5rem;">Contact Us</span>
+            <span class="period"></span>
           </div>
-          <p class="price-note">Billed monthly. Zero lock-in.</p>
+          <p class="price-note">Flexible month-to-month. Zero lock-in.</p>
           <div class="price-divider"></div>
           <ul class="price-features">
             <li class="price-feature">
@@ -408,7 +420,7 @@
             </li>
             <li class="price-feature">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-              Daily Locker &amp; Showers
+              Locker Room Access
             </li>
             <li class="price-feature">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
@@ -419,7 +431,7 @@
               Personalized Nutrition Plan
             </li>
           </ul>
-          <a href="https://wa.me/923364769509?text=Hi%20Shadow%20Fitness%20Gulshan!%20Monthly%20Standard%20Plan%20inquiry." target="_blank" rel="noopener" class="btn btn-ghost btn-full">Join Monthly</a>
+          <a href="tel:4805304988" class="btn btn-ghost btn-full">Get Pricing</a>
         </div>
 
         <!-- Quarterly (Featured) -->
@@ -435,11 +447,11 @@
             </div>
           </div>
           <div class="price-amount">
-            <span class="currency">PKR </span>
-            <span class="amount">16,500</span>
-            <span class="period"> / 3 mos</span>
+            <span class="currency"></span>
+            <span class="amount" style="font-size:1.5rem;">Contact Us</span>
+            <span class="period"></span>
           </div>
-          <p class="price-note green">Save PKR 3,000 vs monthly rate</p>
+          <p class="price-note green">Best value for committed athletes</p>
           <div class="price-divider"></div>
           <ul class="price-features">
             <li class="price-feature">
@@ -448,7 +460,7 @@
             </li>
             <li class="price-feature">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-              Free InBody Composition Analysis
+              Free Fitness Assessment
             </li>
             <li class="price-feature">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
@@ -456,14 +468,14 @@
             </li>
             <li class="price-feature">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-              Weekly Steam Access
+              Priority Equipment Access
             </li>
             <li class="price-feature">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
               2 Free Guest Passes
             </li>
           </ul>
-          <a href="https://wa.me/923364769509?text=Hi%20Shadow%20Fitness%20Gulshan!%20Quarterly%20Pro%20Plan%20inquiry." target="_blank" rel="noopener" class="btn btn-primary btn-full">Claim Pro Plan</a>
+          <a href="tel:4805304988" class="btn btn-primary btn-full">Claim Pro Plan</a>
         </div>
 
         <!-- VIP Annual -->
@@ -478,11 +490,11 @@
             </div>
           </div>
           <div class="price-amount">
-            <span class="currency">PKR </span>
-            <span class="amount">52,000</span>
-            <span class="period"> / yr</span>
+            <span class="currency"></span>
+            <span class="amount" style="font-size:1.5rem;">Contact Us</span>
+            <span class="period"></span>
           </div>
-          <p class="price-note">Only PKR 4,333/month effective rate</p>
+          <p class="price-note">Best effective rate per month</p>
           <div class="price-divider"></div>
           <ul class="price-features">
             <li class="price-feature">
@@ -503,17 +515,17 @@
             </li>
             <li class="price-feature">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-              Unlimited Steam Sessions
+              Unlimited Guest Passes
             </li>
           </ul>
-          <a href="https://wa.me/923364769509?text=Hi%20Shadow%20Fitness%20Gulshan!%20VIP%20Annual%20Plan%20inquiry." target="_blank" rel="noopener" class="btn btn-ghost btn-full">Join VIP Annual</a>
+          <a href="tel:4805304988" class="btn btn-ghost btn-full">Join VIP Annual</a>
         </div>
 
       </div>
 
       <p style="text-align:center;font-size:13px;color:#6b7280;margin-top:32px;">
         Need corporate or PT packages?
-        <a href="tel:03364769509" style="color:#e8192c;font-weight:600;">Call 0336 4769509</a>
+        <a href="tel:4805304988" style="color:#e8192c;font-weight:600;">Call (480) 530-4988</a>
       </p>
 
     </div>
@@ -526,44 +538,37 @@
     <div class="container">
       <div class="timings-grid">
 
-        <div>
+        <div class="reveal-left">
           <p class="section-label">Operational Hours</p>
           <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:#fff;margin-bottom:16px;letter-spacing:-0.02em;">Train on Your Own Clock.</h2>
-          <p style="font-size:15px;color:#6b7280;line-height:1.65;margin-bottom:20px;">6 days a week with early morning starts and late-night sessions to fit any schedule.</p>
+          <p style="font-size:15px;color:#6b7280;line-height:1.65;margin-bottom:20px;">7 days a week with early morning starts and evening sessions to fit any Mesa schedule.</p>
           <div style="padding:16px 20px;border-radius:14px;background:#111114;border:1px solid rgba(255,255,255,0.07);font-size:13px;color:#6b7280;line-height:1.6;">
-            <strong style="color:#f1f5f9;display:block;margin-bottom:4px;">Ladies-only slots available</strong>
-            Call <a href="tel:03364769509" style="color:#e8192c;font-weight:600;">0336 4769509</a> to book a dedicated session.
+            <strong style="color:#f1f5f9;display:block;margin-bottom:4px;">Personal training available daily</strong>
+            Call <a href="tel:4805304988" style="color:#e8192c;font-weight:600;">(480) 530-4988</a> to book your session.
           </div>
         </div>
 
         <div class="timing-rows">
-          <div class="timing-row">
+          <div class="timing-row reveal-right" data-delay="0">
             <div>
-              <div class="timing-label">Monday – Thursday</div>
-              <div class="timing-sub">Full floor &amp; powerlifting bays</div>
+              <div class="timing-label">Monday – Friday</div>
+              <div class="timing-sub">Full floor &amp; all zones open</div>
             </div>
-            <span class="timing-chip">6 AM – 11 PM</span>
+            <span class="timing-chip">5 AM – 11 PM</span>
           </div>
-          <div class="timing-row">
-            <div>
-              <div class="timing-label">Friday</div>
-              <div class="timing-sub">Jummah break 1:00 – 2:30 PM</div>
-            </div>
-            <span class="timing-chip">6 AM – 11 PM</span>
-          </div>
-          <div class="timing-row">
+          <div class="timing-row reveal-right" data-delay="80">
             <div>
               <div class="timing-label">Saturday</div>
               <div class="timing-sub">Weekend conditioning</div>
             </div>
-            <span class="timing-chip">7 AM – 10 PM</span>
+            <span class="timing-chip">7 AM – 9 PM</span>
           </div>
-          <div class="timing-row">
+          <div class="timing-row reveal-right" data-delay="160">
             <div>
-              <div class="timing-label" style="color:#6b7280;">Sunday</div>
-              <div class="timing-sub">Maintenance &amp; sanitation</div>
+              <div class="timing-label">Sunday</div>
+              <div class="timing-sub">Rest &amp; recovery day</div>
             </div>
-            <span class="timing-chip closed">Closed</span>
+            <span class="timing-chip">8 AM – 6 PM</span>
           </div>
         </div>
 
@@ -576,7 +581,7 @@
   ════════════════════════════════════════════════════════ -->
   <section id="bmi">
     <div class="container">
-      <div class="bmi-wrap">
+      <div class="bmi-wrap reveal-scale">
         <p class="section-label" style="text-align:center;">Instant Assessment</p>
         <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.02em;">Check Your BMI</h2>
         <p style="font-size:14px;color:#6b7280;margin-bottom:32px;line-height:1.6;">Enter your height and weight to get an instant result and training recommendation.</p>
@@ -612,13 +617,13 @@
   <section id="contact" style="background:var(--surface);">
     <div class="container">
 
-      <p class="section-label">Visit Us</p>
-      <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.02em;">Shadow Fitness — <span style="color:#e8192c;">Gulshan Branch</span></h2>
-      <p style="font-size:15px;color:#6b7280;margin-bottom:48px;max-width:480px;line-height:1.65;">Walk in, check the equipment, and meet our trainers. No commitment on your first visit.</p>
+      <p class="section-label reveal-up">Visit Us</p>
+      <h2 class="reveal-up" data-delay="80" style="font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.02em;">TG The Gym — <span style="color:#e8192c;">Mesa, AZ</span></h2>
+      <p style="font-size:15px;color:#6b7280;margin-bottom:48px;max-width:480px;line-height:1.65;">Walk in, check the equipment, and meet our trainers. No commitment required on your first visit.</p>
 
       <div class="contact-grid">
 
-        <div class="contact-info">
+        <div class="contact-info reveal-left">
 
           <div class="contact-card">
             <div class="contact-card-icon">
@@ -626,8 +631,8 @@
             </div>
             <div>
               <div class="contact-card-title">Official Address</div>
-              <div class="contact-card-value">FL-3 Allama Shabbir Ahmed Usmani Rd,<br>Block 4 Gulshan-e-Iqbal,<br>Karachi, 75300, Pakistan</div>
-              <a href="https://maps.google.com/?q=FL-3+Allama+Shabbir+Ahmed+Usmani+Rd+Block+4+Gulshan-e-Iqbal+Karachi"
+              <div class="contact-card-value">1126 S Gilbert Rd,<br>Mesa, AZ 85204</div>
+              <a href="https://maps.google.com/?q=1126+S+Gilbert+Rd+Mesa+AZ+85204"
                  target="_blank" rel="noopener" class="contact-card-link">
                 Open in Google Maps
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
@@ -640,16 +645,16 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
             </div>
             <div>
-              <div class="contact-card-title">Phone &amp; WhatsApp</div>
-              <div class="contact-card-value" style="font-size:17px;font-weight:700;color:#fff;letter-spacing:0.01em;">0336 4769509</div>
+              <div class="contact-card-title">Phone &amp; Email</div>
+              <div class="contact-card-value" style="font-size:17px;font-weight:700;color:#fff;letter-spacing:0.01em;">(480) 530-4988</div>
               <div style="display:flex;gap:16px;margin-top:8px;">
-                <a href="tel:03364769509" class="contact-card-link">
+                <a href="tel:4805304988" class="contact-card-link">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 3.75v4.5m0-4.5h-4.5m4.5 0-6 6m3 12c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 0 1 4.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 0 0-.38 1.21 12.035 12.035 0 0 0 7.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 0 1 1.173-.417l4.423 1.106c.5.125.852.576.852 1.091V19.5a2.25 2.25 0 0 1-2.25 2.25h-2.25Z"/></svg>
                   Direct Call
                 </a>
-                <a href="https://wa.me/923364769509" target="_blank" rel="noopener" class="contact-card-link" style="color:#25d366;">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
-                  WhatsApp
+                <a href="mailto:thegymmesa@gmail.com" class="contact-card-link" style="color:#e8192c;">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+                  Email Us
                 </a>
               </div>
             </div>
@@ -657,7 +662,7 @@
 
           <div style="display:flex;flex-direction:column;gap:10px;">
             <button class="btn btn-primary btn-full open-modal" data-plan="Branch Tour">Book a Tour</button>
-            <a href="tel:03364769509" class="btn btn-ghost btn-full">
+            <a href="tel:4805304988" class="btn btn-ghost btn-full">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:16px;height:16px;color:#e8192c;"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
               Call Front Desk
             </a>
@@ -665,18 +670,18 @@
 
         </div>
 
-        <div class="map-wrap">
+        <div class="map-wrap reveal-right">
           <iframe
-            title="Shadow Fitness Gulshan Branch Map"
-            src="https://www.google.com/maps?q=FL-3+Allama+Shabbir+Ahmed+Usmani+Rd+Block+4+Gulshan-e-Iqbal+Karachi&output=embed"
+            title="TG The Gym Mesa Map"
+            src="https://www.google.com/maps?q=1126+S+Gilbert+Rd+Mesa+AZ+85204&output=embed"
             allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
           </iframe>
           <div class="map-overlay">
             <div class="map-overlay-text">
-              <div class="map-overlay-title">Block 4 Gulshan-e-Iqbal</div>
-              <div class="map-overlay-sub">Allama Shabbir Ahmed Usmani Road</div>
+              <div class="map-overlay-title">1126 S Gilbert Rd</div>
+              <div class="map-overlay-sub">Mesa, AZ 85204</div>
             </div>
-            <a href="https://maps.google.com/?q=FL-3+Allama+Shabbir+Ahmed+Usmani+Rd+Block+4+Gulshan-e-Iqbal+Karachi"
+            <a href="https://maps.google.com/?q=1126+S+Gilbert+Rd+Mesa+AZ+85204"
                target="_blank" rel="noopener" class="directions-btn">
               Directions
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"/></svg>
@@ -697,17 +702,17 @@
 
         <!-- Brand -->
         <div>
-          <div class="footer-brand-name">SHADOW FITNESS</div>
-          <div class="footer-brand-sub">Gulshan Branch — Karachi</div>
-          <p class="footer-brand-desc">Premium training facility at Block 4 Gulshan-e-Iqbal. Serious equipment, certified coaches, zero clutter.</p>
+          <div class="footer-brand-name">TG THE GYM MESA</div>
+          <div class="footer-brand-sub">Mesa, Arizona — Phoenix Valley</div>
+          <p class="footer-brand-desc">Premier training facility at 1126 S Gilbert Rd, Mesa. Top-tier equipment, certified coaches, high-energy community.</p>
           <div class="footer-socials">
-            <a href="https://wa.me/923364769509" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
+            <a href="mailto:thegymmesa@gmail.com" class="social-btn" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
             </a>
-            <a href="tel:03364769509" class="social-btn" aria-label="Call">
+            <a href="tel:4805304988" class="social-btn" aria-label="Call">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
             </a>
-            <a href="https://maps.google.com/?q=Shadow+Fitness+Gulshan+Karachi" target="_blank" rel="noopener" class="social-btn" aria-label="Maps">
+            <a href="https://maps.google.com/?q=1126+S+Gilbert+Rd+Mesa+AZ+85204" target="_blank" rel="noopener" class="social-btn" aria-label="Maps">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
             </a>
           </div>
@@ -732,15 +737,15 @@
           <div class="footer-contact">
             <div class="footer-contact-item">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-              <span>FL-3 Allama Shabbir Ahmed Usmani Rd, Block 4 Gulshan-e-Iqbal, Karachi 75300</span>
+              <span>1126 S Gilbert Rd, Mesa, AZ 85204</span>
             </div>
             <div class="footer-contact-item">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
-              <span><a href="tel:03364769509" style="color:#f1f5f9;font-weight:600;">0336 4769509</a></span>
+              <span><a href="tel:4805304988" style="color:#f1f5f9;font-weight:600;">(480) 530-4988</a></span>
             </div>
             <div class="footer-contact-item">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-              <span>Mon–Sat: 6:00 AM – 11:00 PM<br>Sunday: Closed</span>
+              <span>Mon–Fri: 5:00 AM – 11:00 PM<br>Sat: 7 AM – 9 PM &nbsp;|&nbsp; Sun: 8 AM – 6 PM</span>
             </div>
           </div>
         </div>
@@ -748,8 +753,8 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">© 2026 Shadow Fitness — Gulshan Branch. All rights reserved.</p>
-        <p class="footer-copy">Karachi, Pakistan</p>
+        <p class="footer-copy">© 2026 TG The Gym Mesa. All rights reserved.</p>
+        <p class="footer-copy">Mesa, Arizona • Phoenix Valley</p>
       </div>
     </div>
   </footer>
@@ -758,7 +763,7 @@
        MOBILE BOTTOM DOCK
   ════════════════════════════════════════════════════════ -->
   <div id="mobile-dock">
-    <a href="tel:03364769509" class="dock-btn">
+    <a href="tel:4805304988" class="dock-btn">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
       Call
     </a>
@@ -766,9 +771,9 @@
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z"/></svg>
       Free Pass
     </button>
-    <a href="https://wa.me/923364769509?text=Hello%20Shadow%20Fitness%20Gulshan!" target="_blank" rel="noopener" class="dock-btn wa">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
-      WhatsApp
+    <a href="mailto:thegymmesa@gmail.com" class="dock-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+      Email
     </a>
   </div>
 
@@ -776,9 +781,9 @@
        FLOATING WHATSAPP (desktop)
   ════════════════════════════════════════════════════════ -->
   <div id="float-wa">
-    <a href="https://wa.me/923364769509?text=Hello%20Shadow%20Fitness%20Gulshan!" target="_blank" rel="noopener" class="wa-float-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
-      WhatsApp Us
+    <a href="tel:4805304988" class="wa-float-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+      Call Us
     </a>
   </div>
 
@@ -793,40 +798,40 @@
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
       </button>
 
-      <div class="modal-label-tag">Gulshan Branch Pass</div>
-      <h3 class="modal-title">Book Your Free Day Pass</h3>
-      <p class="modal-sub">Fill in your details — we'll confirm your pass via WhatsApp from <strong style="color:#f1f5f9;">0336 4769509</strong>.</p>
+      <div class="modal-label-tag">Mesa VIP Day Pass</div>
+      <h3 class="modal-title">Claim Your Free Day Pass</h3>
+      <p class="modal-sub">Fill in your details — we'll confirm your pass via email from <strong style="color:#f1f5f9;">thegymmesa@gmail.com</strong>.</p>
 
       <form id="modal-form">
         <input type="hidden" id="modal-plan" value="Free 1-Day Pass">
 
         <div class="form-group">
           <label for="f-name">Full Name</label>
-          <input type="text" id="f-name" required placeholder="e.g. Ahmad Khan" autocomplete="name">
+          <input type="text" id="f-name" required placeholder="e.g. John Smith" autocomplete="name">
         </div>
 
         <div class="form-group">
-          <label for="f-phone">Mobile (WhatsApp)</label>
-          <input type="tel" id="f-phone" required inputmode="tel" placeholder="03XX XXXXXXX" autocomplete="tel">
+          <label for="f-phone">Phone Number</label>
+          <input type="tel" id="f-phone" required inputmode="tel" placeholder="(480) 555-0123" autocomplete="tel">
         </div>
 
         <div class="form-group">
           <label for="f-slot">Preferred Time Slot</label>
           <select id="f-slot">
-            <option>Morning (6:00 AM – 11:00 AM)</option>
-            <option>Afternoon (11:00 AM – 4:00 PM)</option>
-            <option>Evening (4:00 PM – 9:00 PM)</option>
-            <option>Night (9:00 PM – 11:00 PM)</option>
+            <option>Morning (5:00 AM – 10:00 AM)</option>
+            <option>Midday (10:00 AM – 3:00 PM)</option>
+            <option>Evening (3:00 PM – 7:00 PM)</option>
+            <option>Night (7:00 PM – 11:00 PM)</option>
           </select>
         </div>
 
         <button type="submit" class="btn btn-primary btn-full">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-          Confirm &amp; Get Pass on WhatsApp
+          Confirm &amp; Claim Free Pass
         </button>
       </form>
 
-      <p class="modal-footer-note">FL-3 Block 4 Gulshan-e-Iqbal &nbsp;•&nbsp; 0336 4769509</p>
+      <p class="modal-footer-note">1126 S Gilbert Rd, Mesa, AZ &nbsp;•&nbsp; (480) 530-4988</p>
     </div>
   </div>
 

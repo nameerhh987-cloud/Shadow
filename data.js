@@ -1,83 +1,80 @@
 // ============================================================================
-// Shadow Fitness – Gulshan Branch | Data Configuration File (data.js)
+// TG The Gym – Mesa | Data Configuration File (data.js)
 // ============================================================================
 
 const SHADOW_DATA = {
   gym: {
-    name: "SHADOW FITNESS",
-    branch: "Gulshan Branch",
-    tagline: "Forge Your Discipline In The Shadows.",
-    description: "Karachi's serious gym for serious lifters. Olympic equipment, expert coaches, zero chaos at Block 4 Gulshan-e-Iqbal.",
-    phone: "0336 4769509",
-    phoneRaw: "03364769509",
-    whatsappNumber: "923364769509",
-    whatsappLink: "https://wa.me/923364769509",
+    name: "TG THE GYM MESA",
+    branch: "Mesa Branch",
+    tagline: "Elevate Your Fitness. Mesa's Premier Gym.",
+    description: "Top-tier equipment, high-energy environment, and a dedicated community in Mesa, Arizona.",
+    phone: "(480) 530-4988",
+    phoneRaw: "4805304988",
+    email: "thegymmesa@gmail.com",
     address: {
-      plot: "FL-3",
-      road: "Allama Shabbir Ahmed Usmani Rd",
-      block: "Block 4 Gulshan-e-Iqbal",
-      city: "Karachi",
-      postalCode: "75300",
-      country: "Pakistan",
-      full: "FL-3 Allama Shabbir Ahmed Usmani Rd, Block 4 Gulshan-e-Iqbal, Karachi, 75300, Pakistan",
-      short: "FL-3 Block 4 Gulshan-e-Iqbal, Karachi"
+      street: "1126 S Gilbert Rd",
+      city: "Mesa",
+      state: "AZ",
+      zip: "85204",
+      full: "1126 S Gilbert Rd, Mesa, AZ 85204",
+      short: "1126 S Gilbert Rd, Mesa, AZ"
     },
     maps: {
-      queryUrl: "https://maps.google.com/?q=FL-3+Allama+Shabbir+Ahmed+Usmani+Rd+Block+4+Gulshan-e-Iqbal+Karachi",
-      embedUrl: "https://www.google.com/maps?q=FL-3+Allama+Shabbir+Ahmed+Usmani+Rd+Block+4+Gulshan-e-Iqbal+Karachi&output=embed"
+      queryUrl: "https://maps.google.com/?q=1126+S+Gilbert+Rd+Mesa+AZ+85204",
+      embedUrl: "https://www.google.com/maps?q=1126+S+Gilbert+Rd+Mesa+AZ+85204&output=embed"
     }
   },
 
   stats: [
-    { label: "Hours", value: "6 AM – 11 PM" },
-    { label: "Equipment", value: "Olympic Grade" },
-    { label: "Climate", value: "Full AC + Gen" },
-    { label: "Location", value: "Block 4 Gulshan" }
+    { label: "500+ REVIEWS", value: "4.5★" },
+    { label: "PRO EQUIPMENT", value: "FULL" },
+    { label: "AZ COMMUNITY", value: "MESA" },
+    { label: "VIP DAY PASS", value: "FREE" }
   ],
 
   about: {
-    sectionLabel: "The Gulshan Chapter",
-    title: "Built for Focus, Space & Real Results.",
-    description: "Located at FL-3 Allama Shabbir Ahmed Usmani Road, Block 4 Gulshan-e-Iqbal, Shadow Fitness was designed from the ground up to eliminate gym chaos.",
-    subDescription: "Precision rubberized flooring, imported biomechanically tuned machines, dedicated free-weight bays, and a no-nonsense training culture.",
+    sectionLabel: "The Mesa Chapter",
+    title: "Built for Performance, Results & Community.",
+    description: "Located at 1126 S Gilbert Rd in Mesa, Arizona, TG The Gym was built from the ground up to deliver a premium fitness experience.",
+    subDescription: "State-of-the-art equipment, dedicated lifting zones, and a high-energy culture that pushes you to your best.",
     checklist: [
-      "Certified strength coaches",
-      "Lockers, showers & steam",
-      "Separate ladies & gents slots",
-      "Full AC & generator backup"
+      "Certified personal trainers",
+      "Full pro-grade equipment",
+      "High-energy group classes",
+      "Mesa's dedicated community"
     ],
     floorStats: [
-      { label: "Floor Layout", value: "Premium 2-Level" },
-      { label: "Free Weights", value: "Up to 60KG DBs" },
-      { label: "Power Platforms", value: "Olympic Bays" },
-      { label: "Power Backup", value: "100% Generator", isGreen: true },
-      { label: "Branch Hotline", value: "0336 4769509", isRed: true, isTel: true }
+      { label: "Floor Layout", value: "Pro Multi-Zone" },
+      { label: "Free Weights", value: "Full Range DBs" },
+      { label: "Cardio Zone", value: "Top-Tier Machines" },
+      { label: "Community", value: "Mesa, AZ", isGreen: true },
+      { label: "Branch Hotline", value: "(480) 530-4988", isRed: true, isTel: true }
     ]
   },
 
   facilities: [
     {
       id: "iron-bay",
-      title: "Heavy Iron Bay",
-      desc: "Calibrated urethane plates, rubber hex dumbbells up to 60kg, competition benches, and dedicated deadlift platforms.",
+      title: "Pro Strength Floor",
+      desc: "Full range of dumbbells, Olympic barbells, power racks, and dedicated deadlift platforms for serious lifters.",
       icon: "dumbbell"
     },
     {
       id: "cardio-deck",
       title: "Cardio Deck",
-      desc: "Commercial curved treadmills, assault bikes, stairmasters, and rowing machines for peak aerobic conditioning.",
+      desc: "Commercial treadmills, ellipticals, assault bikes, and rowing machines for peak aerobic conditioning.",
       icon: "heart-pulse"
     },
     {
       id: "expert-coaches",
       title: "Expert Coaches",
-      desc: "Certified trainers who design personalized macros, progressive overload protocols, and correct form in every session.",
+      desc: "Certified personal trainers who build customized programs and keep your form sharp every session.",
       icon: "users"
     },
     {
-      id: "steam-lockers",
-      title: "Steam & Lockers",
-      desc: "Secure digital lockers, clean showers, post-workout steam sauna, and chilled hydration stations.",
+      id: "community",
+      title: "Mesa Community",
+      desc: "A high-energy, motivating environment built by Mesa locals — your crew is already here training.",
       icon: "sparkles"
     }
   ],
@@ -130,16 +127,16 @@ const SHADOW_DATA = {
       id: "monthly",
       name: "Monthly Standard",
       subLabel: "Flexible Commitment",
-      price: "6,500",
-      period: " / mo",
+      price: "Contact Us",
+      period: "",
       note: "Billed monthly. Zero lock-in.",
       popular: false,
       badge: null,
-      ctaText: "Join Monthly",
+      ctaText: "Get Pricing",
       features: [
         { text: "Full Gym Floor Access", included: true },
         { text: "Unlimited Cardio Deck", included: true },
-        { text: "Daily Locker & Showers", included: true },
+        { text: "Locker Room Access", included: true },
         { text: "Free Machine Orientation", included: true },
         { text: "Personalized Nutrition Plan", included: false }
       ]
@@ -148,17 +145,17 @@ const SHADOW_DATA = {
       id: "quarterly",
       name: "Quarterly Pro",
       subLabel: "3-Month Transformation",
-      price: "16,500",
-      period: " / 3 mos",
-      note: "Save PKR 3,000 vs monthly rate",
+      price: "Contact Us",
+      period: "",
+      note: "Best value for committed athletes",
       popular: true,
       badge: "Best Value",
       ctaText: "Claim Pro Plan",
       features: [
         { text: "Everything in Monthly", included: true, bold: true },
-        { text: "Free InBody Composition Analysis", included: true },
+        { text: "Free Fitness Assessment", included: true },
         { text: "Custom Diet & Nutrition Plan", included: true },
-        { text: "Weekly Steam Access", included: true },
+        { text: "Priority Equipment Access", included: true },
         { text: "2 Free Guest Passes", included: true }
       ]
     },
@@ -166,9 +163,9 @@ const SHADOW_DATA = {
       id: "vip-annual",
       name: "VIP Annual Iron",
       subLabel: "Full 365-Day Access",
-      price: "52,000",
-      period: " / yr",
-      note: "Only PKR 4,333/month effective rate",
+      price: "Contact Us",
+      period: "",
+      note: "Best effective rate per month",
       popular: false,
       badge: null,
       ctaText: "Join VIP Annual",
@@ -177,23 +174,22 @@ const SHADOW_DATA = {
         { text: "Dedicated Locker Assigned", included: true },
         { text: "4 Personal Training Sessions", included: true },
         { text: "Complete Nutrition Blueprint", included: true },
-        { text: "Unlimited Steam Sessions", included: true }
+        { text: "Unlimited Guest Passes", included: true }
       ]
     }
   ],
 
   timings: [
-    { days: "Monday – Thursday", sub: "Full floor & powerlifting bays", hours: "6 AM – 11 PM", closed: false },
-    { days: "Friday", sub: "Jummah break 1:00 – 2:30 PM", hours: "6 AM – 11 PM", closed: false },
-    { days: "Saturday", sub: "Weekend conditioning", hours: "7 AM – 10 PM", closed: false },
-    { days: "Sunday", sub: "Maintenance & sanitation", hours: "Closed", closed: true }
+    { days: "Monday – Friday", sub: "Full floor & all zones open", hours: "5 AM – 11 PM", closed: false },
+    { days: "Saturday", sub: "Weekend conditioning", hours: "7 AM – 9 PM", closed: false },
+    { days: "Sunday", sub: "Rest & recovery day", hours: "8 AM – 6 PM", closed: false }
   ],
 
   slots: [
-    "Morning (6:00 AM – 11:00 AM)",
-    "Afternoon (11:00 AM – 4:00 PM)",
-    "Evening (4:00 PM – 9:00 PM)",
-    "Night (9:00 PM – 11:00 PM)"
+    "Morning (5:00 AM – 10:00 AM)",
+    "Midday (10:00 AM – 3:00 PM)",
+    "Evening (3:00 PM – 7:00 PM)",
+    "Night (7:00 PM – 11:00 PM)"
   ]
 };
 
